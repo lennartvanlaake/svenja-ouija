@@ -1,0 +1,13 @@
+body {
+	background: #333;
+	padding-top: 5em;
+	display: flex;
+	justify-content: center;
+}
+
+#typewriter span {
+	font-size: 3em;
+	color: white;
+	margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+	letter-spacing: 0.05em; /* Adjust as needed */
+}

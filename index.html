@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<link rel="stylesheet" href="styles.css" />
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/TypewriterJS/2.18.2/core.min.js"
+			integrity="sha512-g8TodWNzrsxJkADtGuwwvVND2MVKUuisGWZsj2/NtLA/XFDq9biQpeDMcJ8iu71OpabLfDxfEAdTQFdXjmV60A=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		></script>
+	</head>
+	<div id="typewriter"></div>
+</html>
+
+<script>
+	const baseTimeout = 500;
+	const typewriterElement = document.getElementById("typewriter");
+	const lines = [
+		{
+			text: "Hello Svenja.",
+			keep: false,
+			timeout: baseTimeout * 5,
+		},
+		{
+			text: "Looking sharp today.",
+			keep: false,
+			timeout: baseTimeout * 5,
+		},
+		{
+			text: "Emma here. ",
+			keep: true,
+			timeout: baseTimeout,
+		},
+		{
+			text: "You used to be me. ",
+			keep: true,
+			timeout: baseTimeout,
+		},
+		{
+			text: "Or I am you now. ",
+			keep: false,
+			timeout: baseTimeout,
+		},
+		{
+			text: "Would you like some of my wisdom?",
+			keep: true,
+			timeout: baseTimeout,
+		},
+	];
+	const typewriter = new Typewriter(typewriterElement);
+
+	function type(line) {
+		typewriter.typeString(line.text);
+		typewriter.pauseFor(line.timeout);
+		if (!line.keep) {
+			typewriter.deleteAll();
+		}
+	}
+
+	lines.forEach((line) => {
+		type(line);
+	});
+	typewriter.start();
+</script>
