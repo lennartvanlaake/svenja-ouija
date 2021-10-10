@@ -10,12 +10,30 @@
 			referrerpolicy="no-referrer"
 		></script>
 	</head>
-	<div id="typewriter"></div>
+	<div id="typewriter" class="typed"></div>
+	<br />
+
+	<div id="choices" class="typed hide">
+		<span id="y" class="option">Y</span>/<span id="n" class="option"
+			>N</span
+		>
+	</div>
+
+	<img
+		id="emma"
+		class="out"
+		src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Emma_Goldman_seated.jpg/330px-Emma_Goldman_seated.jpg"
+	/>
 </html>
 
 <script>
 	const baseTimeout = 500;
 	const typewriterElement = document.getElementById("typewriter");
+	const emma = document.getElementById("emma");
+	const choices = document.getElementById("choices");
+	const y = document.getElementById("y");
+
+	const n = document.getElementById("n");
 	const lines = [
 		{
 			text: "Hello Svenja.",
@@ -48,6 +66,16 @@
 			timeout: baseTimeout,
 		},
 	];
+
+	quotes = [
+		"If I can't dance, I don't want to be part of your revolution.",
+		"The most violent element in society is ignorance.",
+		"I'd rather have roses on my table than diamonds on my neck.",
+		"The demand for equal rights in every vocation of life is just and fair; but, after all, the most vital right is the right to love and be loved.",
+		"When we can't dream any longer we die.",
+		"Heaven must be an awfully dull place if the poor in spirit live there.",
+		"Free love? as if love is anything but free. Man has bought brains, but all the millions in the world have failed to buy love.",
+	];
 	const typewriter = new Typewriter(typewriterElement);
 
 	function type(line) {
@@ -57,9 +85,33 @@
 			typewriter.deleteAll();
 		}
 	}
+	function getRandomInt(max) {
+		return Math.floor(Math.random() * max);
+	}
+	function quote() {
+		const quote = quotes[getRandomInt(quotes.length - 1)];
+		typewriter.deleteAll();
+		typewriter.typeString("<i>" + quote + "</i>");
+		typewriter.start();
+	}
+
+	function goodbye() {
+		typewriter.deleteAll();
+		typewriter.typeString(
+			"All right then, you seem to be doing fine. Feel free to call on me any time."
+		);
+		typewriter.start();
+	}
 
 	lines.forEach((line) => {
 		type(line);
 	});
+	typewriter.callFunction(() => {
+		emma.className = "in";
+		choices.className = "typed show";
+	});
+
 	typewriter.start();
+	y.onclick = quote;
+	n.onclick = goodbye;
 </script>

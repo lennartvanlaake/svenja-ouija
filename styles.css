@@ -2,12 +2,46 @@ body {
 	background: #333;
 	padding-top: 5em;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
+	align-items: center;
 }
 
-#typewriter span {
+.typed {
 	font-size: 3em;
 	color: white;
 	margin: 0 auto; /* Gives that scrolling effect as the typing happens */
 	letter-spacing: 0.05em; /* Adjust as needed */
+}
+
+#emma {
+	margin-top: 5em;
+	border-radius: 2em;
+	width: 14em;
+	height: 14em;
+	object-fit: cover;
+	transition: opacity 2s ease;
+}
+
+.in {
+	opacity: 1;
+}
+.out {
+	opacity: 0;
+}
+
+.show {
+	display: block;
+}
+
+.hide {
+	display: none;
+}
+
+#choices {
+	transition: opacity 2s ease;
+}
+
+.option:hover {
+	color: grey;
 }
